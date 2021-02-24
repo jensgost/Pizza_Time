@@ -1,4 +1,4 @@
-"strict mode";
+"use strict";
 /*
 let choose = document.getElementById("choose-button");
 
@@ -7,20 +7,42 @@ choose.addEventListener("submit", () => {
 } )
 */
 
-try{
+
    async function getPizza() {
-     const response = await fetch('https://foodish-api.herokuapp.com/api/images/pizza');
+     let url = new URL('https://foodish-api.herokuapp.com/api/images/pizza');
    
-     if (response.ok) {
-      console.log(response);
-     } else {
-      console.log("Did not work")
+     let response = await fetch(url);
+     let URLData = await response.json();
+
+     console.log(URLData);
+
+     return URLData;
+     
+   }
+
+getPizza().then((URLData) =>{
+   let objectURL = URL.createObjectURL(URLData);
+   let image = document.createElement('img');
+   image.src = objectURL;
+   document.body.appendChild(image);
+}).catch(e => console.log(e));
+
+/*
+      if (response.ok) {
+         return await response.json();
+        } else {
+         console.log("Did not work")
+        }  
      }
-  } 
-}
-  catch(error) {
-     console.log("Did not work2")
-}
+
+     getPizza().then((pizzaImage) => {
+      let objectURL = URL.createObjectURL(pizzaImage);
+      let image = document.createElement('img');
+      image.src = objectURL;
+      document.body.appendChild(image);
+     }).catch(e => console.log(e));
+
+     */
 
 /*
 fetch('https://foodish-api.herokuapp.com/api/images/pizza').then(res => {
