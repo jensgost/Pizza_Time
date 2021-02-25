@@ -6,4 +6,4 @@ The concept is a website in which the user can browse through different pictures
 Each image shall be clickable and once the user clicks an image it will be displayed (using Bootstrap card) below the carousel of images.
 
 Using following API:
-https://spoonacular.com/food-api
+https://foodish-api.herokuapp.com/images/pizza/
